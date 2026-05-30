@@ -532,7 +532,7 @@ export default function Assessment() {
   const sendResults = async (res) => {
     setSending(true);
     try {
-      await fetch("SEU_WEBHOOK_MAKE_AQUI", {
+      await fetch("https://script.google.com/macros/s/AKfycbyYjSr4y8vkh_9KIoiRwvhwdU4RndCib7o53qR5J2B_71z7UniqZAZjua1h4pvMfB1P/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pessoa, resultados: res }),

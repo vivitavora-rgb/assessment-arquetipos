@@ -532,11 +532,15 @@ export default function Assessment() {
   const sendResults = async (res) => {
     setSending(true);
     try {
+      const form = new FormData();
+      form.append("nome", pessoa.nome);
+      form.append("email", pessoa.email);
+      form.append("telefone", pessoa.telefone);
+      form.append("resultados", JSON.stringify(res));
       await fetch("https://script.google.com/macros/s/AKfycbyYjSr4y8vkh_9KIoiRwvhwdU4RndCib7o53qR5J2B_71z7UniqZAZjua1h4pvMfB1P/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pessoa, resultados: res }),
+        body: form,
       });
     } catch (e) { console.error(e); }
     setSending(false);
